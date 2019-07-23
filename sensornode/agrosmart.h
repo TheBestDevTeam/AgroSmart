@@ -5,11 +5,13 @@
 #include <DHT_U.h>
 #include<ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
+#include <ArduinoJson.h>
 
 #define SSID_NAME "MSFTGUEST"
 #define ERROR 1
 #define SUCCESS 0
 #define ECONNECT 2
+#define EGET 6
 #define EPOST 3
 #define ETEMP 4
 #define EHUMIDITY 5
