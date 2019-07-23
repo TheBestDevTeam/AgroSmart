@@ -30,6 +30,7 @@ class PostSensorData(Resource):
         response = requests.post(container_ip.format("SensorData",""),json=data)
 
 api.add_resource(RetrieveSettings, '/sensornode/<int:crop_id>')
+api.add_resource(PostSensorData, '/SensorData/')
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="80")
