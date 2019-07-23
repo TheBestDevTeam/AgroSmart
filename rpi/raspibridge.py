@@ -7,7 +7,7 @@ import json
 app = Flask(__name__)
 api = Api(app)
 
-container_ip = "http://localhost:5000/{0}/{1}"
+container_ip = "http://sribs-ubuntu:5000/{0}/{1}"
 
 class RetrieveSettings(Resource):
     def get(self, crop_id):
@@ -25,7 +25,7 @@ class UserLocationDetails(Resource):
 
 class PostSensorData(Resource):
     def post(self):
-        data = requests.get_json()
+        data = request.get_json()
         
         response = requests.post(container_ip.format("SensorData",""),json=data)
 
