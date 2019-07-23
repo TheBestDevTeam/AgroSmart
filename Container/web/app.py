@@ -43,6 +43,7 @@ class CropSettings(Resource):
             'status':200,
             'message': 'Crops deletion successful'
         })        
+        
     def post(self, crop_id):
         data = request.get_json()
         crops.insert_one(data)

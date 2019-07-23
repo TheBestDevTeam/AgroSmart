@@ -11,6 +11,7 @@
 #define ERROR 1
 #define SUCCESS 0
 #define ECONNECT 2
+#define EGET 6
 #define EPOST 3
 #define ETEMP 4
 #define EHUMIDITY 5
