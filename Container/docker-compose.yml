@@ -5,8 +5,13 @@ services:
     build: "./web"
     ports:
       - "5000:5000"
-      - "27017:27017"
     links:
       - agrosmart
   agrosmart:
     build: "./db"
+    ports:
+      - "27017:27017"
+  dashboard:
+    build: "./dashboard"
+    ports:
+      - "80:80"
