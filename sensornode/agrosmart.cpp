@@ -16,14 +16,14 @@ int ConnectWifi()
         return (WiFi.status() == WL_CONNECTED ? SUCCESS : -ECONNECT);
 }
 
-int HTTPInit(HTTPClient *http, char *endpoint)
+int HTTPInit(HTTPClient *http, String endpoint)
 {
         http->begin(endpoint);
         http->addHeader("Content-Type", CONTENT_TYPE);
         return SUCCESS;
 }
 
-int PostSettings(HTTPClient *http, String settings)
+int PostData(HTTPClient *http, String settings)
 {
         if (http == NULL)
                 return -EPOST;

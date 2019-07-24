@@ -21,8 +21,8 @@
 #define CONTENT_TYPE "application/json"
 
 int ConnectWifi();
-int HTTPInit(HTTPClient *http, char *endpoint);
+int HTTPInit(HTTPClient *http, String endpoint);
 int PostSensorData(HTTPClient *http);
-int PostSettings(HTTPClient *http, String settings);
+int PostData(HTTPClient *http, String settings);
 
 #endif
