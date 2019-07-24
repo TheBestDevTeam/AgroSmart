@@ -3,6 +3,7 @@
 <title>AgroSmart</title>
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 <meta content="utf-8" http-equiv="encoding">
+<meta http-equiv="refresh" content="3600">
 </head>
 <style>
     @import url(https://fonts.googleapis.com/css?family=Montserrat);
@@ -41,7 +42,7 @@
         position: relative;
         width: 500px;
         right: -600px;
-        top: -430px
+        top: -645px;
     }
 
     .upper{
@@ -49,6 +50,14 @@
         background:#f5f5f5;
         height:200px;
         padding:20px;
+    }
+
+    .statusbar{
+        border-radius:5px 5px 0 0;
+        background:#f5f5f5;
+        height:40px;
+        padding:20px;
+        top: -745px;
     }
 
     .grapht{
@@ -130,7 +139,7 @@
         margin-top:20px;
     }
     .weather p {
-        font-size:20px;padding:10px 0;
+        font-size:30px;padding:10px 0;
     }
     .anim{animation:fade .8s linear;}
 
@@ -162,36 +171,61 @@
     <div class="year">Temperature</div>
     <div class="place update" id="temperature">23 &deg;C</div>
     <div style="text-align: center;">AgroSmart</div>
-  </div>
-  <div class="lower">    
-    <ul class="infos">
-      <li class="info temp">
-        <h2 class="title">TEMPERATURE</h2>
-        <span class='update' id="temp">21 &deg;C</span>
-      </li>
-      <li class="info weather">
-        <h2 class="title">WEATHER</h2>
-        <p class="main update" id="weather">Sunny</p>
-      </li>
-      <li class="info wind">
-        <h2 class="title">RAIN</h2>
-        <span class='update' id="rain">0%</span>
-      </li>
-      <li class="info humidity">
-        <h2 class="title">HUMIDITY</h2>
-        <span class='update' id="humidity">23%</span>
-      </li>
-    </ul>
-  </div>
-  <br><br><br>
-  <div id="grapht"></div>
-</div>
+    <br><br>
+    <h2 class="title" style="text-align: center;">Next 3hr Forecast</h1>
+    </div>
+    <div class="lower">
+        <ul class="infos">
+        <li class="info temp">
+            <h2 class="title">TEMPERATURE</h2>
+            <span class='update' id="temp">21 &deg;C</span>
+        </li>
+        <li class="info weather">
+            <h2 class="title">WEATHER</h2>
+            <p class="main update" id="weather">Sunny</p>
+        </li>
+        <li class="info wind">
+            <h2 class="title">RAIN</h2>
+            <span class='update' id="rain">0%</span>
+        </li>
+        <li class="info humidity">
+            <h2 class="title">HUMIDITY</h2>
+            <span class='update' id="humidity">23%</span>
+        </li>
+        </ul>
+    </div>
+    <br><br>
+    <div class="statusbar">
+            <div style="text-align: center;" id="status"></div>
+    </div>
+    <br><br>
+    <div id="grapht"></div>
+    </div>
+    <div class="graphh"> 
+        <div id="graph2"></div>
+    </div>
+    <div class="graphm"> 
+        <div id="graph3"></div>
+    <br><br>
+    <div class="lower">
+            <form>
+                    <label><b>Enter MAC Address</b></label>
+                    <input type="text" name="message" id="username">
+                </form>
+                
+                <input type="submit" onclick="populateUserData();"><br/>
 
-<div class="graphh"> 
-    <div id="graph2"></div>
-</div>
-<div class="graphm"> 
-    <div id="graph3"></div>
+
+                <form id="myForm">
+                    <label><b>Choose a sensor</b></label>
+                    <select id="selectmac">
+                    </select>
+                </form>
+
+                <input type="submit" onclick="apiDisplay();"><br/>
+                <label><b>Realtime Data shown for Mac Address  : </b></label>
+                <b><span id='display'></span></b>
+    </div>
 </div>
      
 <script>
@@ -214,25 +248,10 @@ function drawClock(){
     document.getElementById("hour").style.transform = "rotate("+(hourAngle)+"deg)";
     //minute
     document.getElementById("min").style.transform = "rotate("+(minAngle)+"deg)";
- 
-    //Get Humidity Temperature and Rain Data
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-      var txt = this.responseText;
-      var obj = JSON.parse(txt); //Ref: https://www.w3schools.com/js/js_json_parse.asp
-        document.getElementById("rain").innerHTML = obj.Rain + "%";
-        document.getElementById("temperature").innerHTML = Math.round(obj.Temperature) + "&deg;C";
-        document.getElementById("temp").innerHTML = Math.round(obj.Temperature) + "&deg;C";
-        document.getElementById("humidity").innerHTML = Math.round(obj.Humidity) + "%";
-      }  
-    };
-   xhttp.open("GET", "readADC", true); //Handle readADC server on ESP8266
-   xhttp.send();
+    
 }
 </script>
 <!--<script src="app.js"></script> -->
-<script type="text/javascript" src="app.js"> </script>
 <script src="./graph.js"></script>
 </body>
 </html>
