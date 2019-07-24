@@ -1,4 +1,2 @@
-FROM python:3
-WORKDIR /usr/src/app
-COPY . .
-CMD ["python", "-m", "SimpleHTTPServer","80"]
+FROM httpd:2.4
+COPY . /usr/local/apache2/htdocs/
