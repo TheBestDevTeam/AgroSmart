@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceManifest Name="apiPkg" Version="3.4.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ManifestId="1733a92d-5f47-4be7-a4c3-8a334aa97ca9">
+  <ServiceTypes>
+    <!-- This is the name of your ServiceType. 
+         This name must match the string used in RegisterServiceType call in Program.cs. -->
+    <StatefulServiceType ServiceTypeName="apiType" HasPersistedState="true" />
+  </ServiceTypes>
+  <!-- Code package is your service executable. -->
+  <CodePackage Name="Code" Version="3.4.0">
+    <EntryPoint>
+      <ExeHost>
+        <Program>api.exe</Program>
+        <WorkingFolder>CodePackage</WorkingFolder>
+      </ExeHost>
+    </EntryPoint>
+    <EnvironmentVariables>
+      <EnvironmentVariable Name="ASPNETCORE_ENVIRONMENT" Value="" />
+    </EnvironmentVariables>
+  </CodePackage>
+  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an 
+       independently-updateable and versioned set of custom configuration settings for your service. -->
+  <ConfigPackage Name="Config" Version="3.4.0" />
+  <Resources>
+    <Endpoints>
+      <Endpoint Protocol="http" Name="ServiceEndPoint" Type="Input" Port="9000" />
+    </Endpoints>
+  </Resources>
+</ServiceManifest>

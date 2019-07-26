@@ -1,0 +1,2 @@
+K:\AgroSmartService\AgroSmartService\obj\x64\Debug\AgroSmartService.sfproj.CoreCompileInputs.cache
+D:\AgroSmartService\AgroSmartService\obj\x64\Debug\AgroSmartService.sfproj.CoreCompileInputs.cache
