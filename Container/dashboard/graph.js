@@ -112,7 +112,8 @@ function updatePlot() {
         var update_m = {
             x:  [[time]],
             y: [[data["moisture"]]]
-            };     
+            };
+        document.getElementById("temperature").innerHTML = data["temperature"].toString() + " &deg;C"
         Plotly.extendTraces('grapht', update_t, [0])
         Plotly.extendTraces('graph2', update_h, [0])
         Plotly.extendTraces('graph3', update_m, [0])
